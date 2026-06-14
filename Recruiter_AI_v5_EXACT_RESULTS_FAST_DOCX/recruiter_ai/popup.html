@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Recruiter.ai</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand"><img src="icons/icon48.png" alt=""><div><b>Recruiter.ai</b><span>Resume-first job matching</span></div></div>
+      <button id="resetBtn" class="ghost">Reset</button>
+    </header>
+    <nav class="steps">
+      <button class="step active" data-view="importView">1 Import</button>
+      <button class="step" data-view="profileView">2 Profile</button>
+      <button class="step" data-view="jobsView">3 Matches</button>
+    </nav>
+    <main>
+      <section id="importView" class="view active">
+        <div class="card hero"><h1>Import your resume</h1><p>Upload DOCX/TXT, paste your resume, or extract visible text from LinkedIn/GitHub/ORCID.</p></div>
+        <div class="card">
+          <div class="buttonRow"><button id="importBtn" class="primary">Import DOCX / TXT</button><button id="linkedinBtn" class="secondary">Extract current tab</button></div>
+          <input id="fileInput" type="file" accept=".docx,.txt,.md,.rtf" hidden />
+          <p id="fileStatus" class="status">No resume loaded yet.</p>
+          <textarea id="resumeText" placeholder="Paste resume or profile text here..."></textarea>
+          <div class="buttonRow"><button id="analyzeBtn" class="primary">Build Candidate Profile</button><button id="sampleBtn" class="secondary">Use Sample</button><button id="clearTextBtn" class="secondary">Clear</button></div>
+        </div>
+      </section>
+
+      <section id="profileView" class="view">
+        <div class="card profile-head"><div><span class="eyebrow">Candidate profile</span><h2 id="candidateName">No profile built</h2><p id="candidateHeadline">Import or paste a resume first.</p></div><button id="findJobsBtn" class="primary">Find Jobs</button></div>
+        <div class="grid"><div class="card metric"><span>Level</span><strong id="levelOut">—</strong><small id="yearsOut">—</small></div><div class="card metric"><span>Salary target</span><strong id="salaryOut">—</strong></div><div class="card metric"><span>Top lane</span><strong id="fitOut">—</strong></div></div>
+        <div class="card"><h3>Recommended job searches</h3><div id="titlesOut" class="chips"></div></div>
+        <div class="card"><h3>Skills found</h3><div id="skillsOut" class="chips"></div></div>
+        <div class="card"><h3>Industries found</h3><div id="industriesOut" class="chips"></div></div>
+      </section>
+
+      <section id="jobsView" class="view">
+        <div class="card job-toolbar"><div><span class="eyebrow">Exact postings</span><h2 id="jobTitleHead">Matched jobs</h2><p>Each result is a specific job req with its own date, source, match score, and ghost score.</p></div><button id="refreshJobsBtn" class="primary">Search</button></div>
+        <div class="card controls">
+          <label>Target job title<input id="targetTitle" placeholder="Auto-built from resume"></label>
+          <label>Location / work mode<input id="locationInput" value="remote" placeholder="remote, Tampa, Florida"></label>
+          <label>Freshness<select id="freshness"><option value="1">Past 24 hours</option><option value="3" selected>Past 72 hours</option><option value="7">Past week</option><option value="30">Past month</option></select></label>
+          <label>Extra words<input id="extraInput" placeholder="optional: full-time, senior, salary"></label>
+          <div class="buttonRow"><button id="copySearchBtn" class="secondary">Copy search</button><button id="exportBtn" class="secondary">Export TXT</button></div>
+        </div>
+        <div class="card explainer"><p><b>Match</b> compares the job title/description to your resume. <b>Ghost score</b> warns when a posting may be stale, vague, reposted, missing pay, or less likely to lead to a real hire. Lower is better.</p></div>
+        <div id="resultStatus" class="status card">Ready. Click Search.</div>
+        <div id="jobResults" class="results"></div>
+      </section>
+    </main>
+    <footer>Sources: RemoteOK, Arbeitnow, exact job posting pages, and employee-review search links. Built by <a href="https://salt19.com" target="_blank">SALT19</a>. Local resume parsing; no resume upload server.</footer>
+  </div>
+<script src="popup.js"></script>
+</body>
+</html>
