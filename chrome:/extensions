@@ -1,0 +1,68 @@
+
+5. Enable Developer Mode
+6. Click Load Unpacked
+7. Select the extension folder
+8. Pin Recruiter.ai
+
+---
+
+## Tech Stack
+
+- JavaScript
+- HTML
+- CSS
+- Chrome Extension APIs
+- Local Resume Parsing
+- Resume-to-Job Scoring Engine
+
+---
+
+## Roadmap
+
+### Version 1
+- Resume Import
+- Candidate Profile Generation
+- Exact Job Matching
+- Ghost Job Risk
+- Direct Apply Links
+
+### Version 2
+- Resume Optimization Suggestions
+- ATS Scoring
+- LinkedIn Profile Matching
+- Cover Letter Assistance
+- Interview Preparation
+
+### Version 3
+- Recruiter Intelligence
+- Company Research
+- Salary Analysis
+- Hiring Velocity Signals
+- AI Career Agent
+
+---
+
+## Project Status
+
+Active Development
+
+Current focus:
+- Faster job discovery
+- Better job-post accuracy
+- Improved matching precision
+- Enhanced ghost-job detection
+
+---
+
+## Disclaimer
+
+Recruiter.ai provides informational job-matching assistance. Match scores, ghost-risk estimates, and recommendations are predictive indicators and should not be considered guarantees of hiring outcomes.
+
+---
+
+## Author
+
+Gabriel Allit  
+SALT19 LLC
+
+Built to help candidates spend less time searching and more time interviewing.
