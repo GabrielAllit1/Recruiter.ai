@@ -2,90 +2,83 @@
 
 Resume-first job matching for Chrome.
 
-Recruiter.ai analyzes your resume locally, extracts skills and experience, and matches you against specific job postings instead of generic company-level listings. The goal is to help job seekers focus on real opportunities, prioritize high-fit positions, and avoid wasting time on stale or low-quality postings.
+Recruiter.ai analyzes resume text locally in the browser, builds a candidate profile, and matches that profile against specific public job postings. It is designed to help job seekers focus on higher-fit opportunities, inspect freshness and ghost-job risk signals, and move from resume to targeted search faster.
+
+## Install Recruiter.ai
+
+**Recommended:** install the published extension from the Chrome Web Store:
+
+https://chromewebstore.google.com/detail/recruiterai/hhlignadhoncjciohnkejonccilhmhde
+
+The Chrome Web Store is the primary distribution channel for normal users. GitHub is the source-code and manual-install channel.
 
 ## Features
 
-### Resume-First Matching
-- Import DOCX resumes
-- Import TXT resumes
+### Resume-first matching
+- Import DOCX or TXT resumes
 - Paste resume text directly
-- Extract profile information from the current tab
-- Local parsing inside the browser
+- Extract visible text from the current tab only when the user requests it
+- Local candidate-profile generation
 
-### Exact Job Matching
-- Matches against individual job requisitions
-- Company-specific results
+### Exact job matching
+- Specific job requisitions rather than generic company listings
 - Direct application links
 - Job-source identification
-- Freshness indicators
+- Posting freshness indicators
 
-### Match Intelligence
-- Match Score
-- Ghost Job Risk Score
-- Posting Freshness
-- Resume Alignment Analysis
-- Missing Skill Identification
-
-### Privacy Focused
-- Local resume parsing
-- No resume uploads required
-- No external storage of resume data
-- User-controlled workflow
-
-## Why Recruiter.ai?
-
-Most job boards return thousands of results based on keywords alone. Recruiter.ai starts with the candidate profile first and then evaluates jobs against the candidate's actual experience, skills, certifications, and background.
-
-This produces:
-- Better-fit opportunities
-- Less application spam
-- Faster job searches
-- Improved interview conversion rates
-
-## Current Workflow
-
-### Step 1 — Import your resume
-- DOCX
-- TXT
-- Paste text
-- Extract current tab
-
-### Step 2 — Build Candidate Profile
-Recruiter.ai extracts:
-- Skills
-- Certifications
-- Experience
-- Technologies
-- Industry keywords
-- Role alignment
-
-### Step 3 — Review Matches
-Each result includes:
-- Job title
-- Company
-- Source
-- Match %
-- Ghost risk
+### Match intelligence
+- Match score
+- Ghost-job risk score
 - Posting freshness
-- Apply link
+- Resume alignment analysis
+- Missing-skill / keyword suggestions
 
-## Installation — Chrome
+### Privacy-focused design
+- Resume parsing is performed locally in Chrome
+- Candidate profile data is stored locally with `chrome.storage.local`
+- No Recruiter.ai user account is required
+- Resume text is not uploaded to SALT19 servers
+- Current-page extraction happens only after an explicit user action
 
-> Chrome extensions installed from GitHub must be extracted first. Do **not** try to load the ZIP file itself in Chrome.
+Privacy policy: https://salt19.com/recruiter-ai/privacy.html
+
+## Current permissions
+
+Recruiter.ai intentionally requests a narrow permission set:
+
+- `storage` — retains the locally generated candidate profile on the device
+- `activeTab` — grants temporary access to the active page after the user invokes the extension
+- `scripting` — reads visible page text when the user explicitly chooses **Extract current tab**
+- `https://remoteok.com/*` — retrieves public job-listing data from RemoteOK
+- `https://www.arbeitnow.com/*` — retrieves public job-listing data from Arbeitnow
+
+Recruiter.ai does not execute remotely hosted JavaScript.
+
+## How matching works
+
+1. Import or paste resume/profile text.
+2. Recruiter.ai extracts skills, industries, likely role families, seniority signals, and other candidate-profile information locally.
+3. Public job feeds are retrieved from supported job sources.
+4. Job data is compared locally against the candidate profile.
+5. Results are ranked and displayed with match and ghost-job risk signals.
+
+When live API results are insufficient, Recruiter.ai can offer user-initiated Google search links assembled from role, skill, location/work-mode, or company terms. Those searches are opened only when the user chooses them and are then subject to Google's own privacy practices.
+
+## Manual / developer installation
+
+Use this only if you want the GitHub source build instead of the Chrome Web Store release.
 
 1. Download the current source ZIP: https://github.com/GabrielAllit1/Recruiter.ai/archive/refs/heads/main.zip
 2. Extract `Recruiter.ai-main.zip` completely.
-3. Confirm the extracted `Recruiter.ai-main` folder directly contains `manifest.json`, `popup.html`, `popup.js`, `styles.css`, and the `icons` folder.
-4. Open Chrome and navigate to `chrome://extensions`.
+3. Confirm `Recruiter.ai-main` directly contains `manifest.json`, `popup.html`, `popup.js`, `styles.css`, and `icons/`.
+4. Open `chrome://extensions`.
 5. Enable **Developer mode**.
 6. Click **Load unpacked**.
-7. Select the extracted `Recruiter.ai-main` folder — the folder that directly contains `manifest.json`.
-8. Pin Recruiter.ai if you want quick access from the Chrome toolbar.
+7. Select the extracted `Recruiter.ai-main` folder that directly contains `manifest.json`.
 
-If Chrome reports that the manifest is missing or unreadable, the wrong folder was selected. Select the extracted folder that directly contains `manifest.json`, not the ZIP file or a parent directory.
+Do not attempt to load the ZIP itself.
 
-## Repository Layout
+## Repository layout
 
 ```text
 Recruiter.ai/
@@ -102,57 +95,33 @@ Recruiter.ai/
 └── LICENSE
 ```
 
-The installable extension is intentionally kept at the repository root so GitHub's generated source ZIP can be extracted and loaded directly without navigating through nested package folders.
-
-## Tech Stack
+## Tech stack
 
 - JavaScript
 - HTML
 - CSS
 - Chrome Extension APIs
-- Local Resume Parsing
-- Resume-to-Job Scoring Engine
+- Local resume parsing
+- Resume-to-job scoring logic
 
-## Roadmap
+## Project status
 
-### Version 1
-- Resume Import
-- Candidate Profile Generation
-- Exact Job Matching
-- Ghost Job Risk
-- Direct Apply Links
-
-### Version 2
-- Resume Optimization Suggestions
-- ATS Scoring
-- LinkedIn Profile Matching
-- Cover Letter Assistance
-- Interview Preparation
-
-### Version 3
-- Recruiter Intelligence
-- Company Research
-- Salary Analysis
-- Hiring Velocity Signals
-- AI Career Agent
-
-## Project Status
-
-Active Development
+Active development.
 
 Current focus:
 - Faster job discovery
 - Better job-post accuracy
 - Improved matching precision
+- Clearer privacy and permission boundaries
 - Enhanced ghost-job detection
 
 ## Disclaimer
 
-Recruiter.ai provides informational job-matching assistance. Match scores, ghost-risk estimates, and recommendations are predictive indicators and should not be considered guarantees of hiring outcomes.
+Recruiter.ai provides informational job-matching assistance. Match scores, ghost-risk estimates, salary ranges, freshness signals, and recommendations are predictive or heuristic indicators and are not guarantees of hiring outcomes, compensation, or job availability.
 
 ## Author
 
 Gabriel Allit  
 SALT19 LLC
 
-Built to help candidates spend less time searching and more time interviewing.
+Built to help candidates spend less time searching and more time pursuing relevant opportunities.

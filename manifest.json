@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Recruiter.ai",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Resume-first job matching with exact job cards, match score, ghost-job warning, and workplace links.",
   "action": {
     "default_popup": "popup.html",
@@ -13,13 +13,9 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "permissions": ["storage", "tabs", "activeTab", "scripting"],
+  "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": [
     "https://remoteok.com/*",
-    "https://www.arbeitnow.com/*",
-    "https://www.google.com/*",
-    "https://www.linkedin.com/*",
-    "https://github.com/*",
-    "https://orcid.org/*"
+    "https://www.arbeitnow.com/*"
   ]
 }
