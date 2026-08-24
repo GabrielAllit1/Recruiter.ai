@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Recruiter.ai",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "Resume-first job matching with exact job cards, match score, ghost-job warning, and workplace links.",
   "action": {
     "default_popup": "popup.html",
