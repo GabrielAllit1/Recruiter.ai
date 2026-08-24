@@ -33,7 +33,13 @@ The Chrome Web Store is the primary distribution channel for normal users. GitHu
 - Resume alignment analysis
 - Missing-skill / keyword suggestions
 
-### Privacy-focused design
+### Support and Product Links
+
+- Support continued free development: https://buymeacoffee.com/salt19
+- Product guide: https://salt19.com/recruiter-ai/
+- Explore SALT19: https://salt19.com
+
+## Privacy-focused design
 - Resume parsing is performed locally in Chrome
 - Candidate profile data is stored locally with `chrome.storage.local`
 - No Recruiter.ai user account is required
